@@ -3,7 +3,7 @@ import Link from "next/link";
 import backgroundImage from '@/public/bg.png'
 
 
-export default function Home() {
+export default async function Home() {
   return (
       <div className="mt-24">
         <Image fill placeholder='blur' className="object-cover object-top" src={backgroundImage} alt="Mountains and forests with two cabins" />
