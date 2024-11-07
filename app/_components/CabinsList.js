@@ -3,8 +3,6 @@ import {getCabins} from '@/app/_lib/data-service'
 import CabinCard from "@/app/_components/CabinCard";
 export default async function CabinsList({filter}) {
   const cabins=await getCabins();
-  console.log(cabins);
-  
   let currentCabins;
   if(filter=='small'){currentCabins=cabins.filter((cabin) => cabin.maxCapacity <= 3)}
   else if(filter=='medium'){currentCabins=cabins.filter(item=>item.maxCapacity <=7)}

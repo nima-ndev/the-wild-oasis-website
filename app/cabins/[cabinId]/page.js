@@ -1,6 +1,9 @@
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { getCabin } from "@/app/_lib/data-service";
 import TextExpander from "@/app/_components/TextExpander";
+import { Suspense } from "react";
+import Loading from "@/app/loading";
+import Reservation from "@/app/_components/Reservation";
 
 export async function generateMetadata({params}){
     const {name} = await getCabin(params.cabinId) 
@@ -52,10 +55,13 @@ export default async function Page({params}) {
       </div>
 
       <div>
-        <h2 className="text-5xl font-semibold text-center">
-          Reserve today. Pay on arrival.
+        <h2 className="text-5xl font-semibold text-center text-accent-400">
+          Reserve {name} today. Pay on arrival.
         </h2>
       </div>
+      <Suspense fallback={<Loading />}>
+        <Reservation />
+      </Suspense>
     </div>
   );
 }
